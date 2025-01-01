@@ -1,0 +1,12 @@
+{
+  "diffEditor.renderSideBySide": true,
+  "diffEditor.renderSideBySideInlineBreakpoint": 900,
+  "editor.scrollbar.vertical": "auto",
+  "editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": false,
+  "editor.scrollBeyondLastLine": true,
+  "editor.smoothScrolling": false,
+  "editor.stickyScroll.enabled": false,
+  "editor.fontFamily": "Menlo, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.fontWeight": "normal"
+}
