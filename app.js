@@ -22,6 +22,7 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
+// const dbUrl = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
 
 main()
@@ -32,10 +33,10 @@ main()
     console.log(err);
   });
 async function main() {
-  await mongoose.connect(dbUrl);
+  mongoose.connect(dbUrl);
 }
 
-app.set("views engine", "ejs");
+app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride("_method"));
@@ -110,7 +111,10 @@ app.all("*", (req, res, next) => {
 //Error Handling Middleware:-
 app.use((err, req, res, next) => {
   let {statusCode = 500, message = "Something went wrong!"} = err;
-  res.status(statusCode).render("error.ejs", {message});
+  res.status(statusCode).render("error.ejs", {
+    message,
+    currUser: req.user,
+  });
 });
 
 app.listen(8080, () => {
