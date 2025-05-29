@@ -6,7 +6,8 @@ module.exports.renderSignupForm = (req, res) => {
   res.render("users/signup.ejs");
 };
 
-module.exports.signUp = async (req, res) => {
+module.exports.signUp = async (req, res, next) => {
+  // <-- added next here
   try {
     let {username, email, password} = req.body;
     const newUser = new User({email, username});
@@ -30,7 +31,7 @@ module.exports.renderLoginForm = (req, res) => {
 };
 
 module.exports.login = async (req, res) => {
-  req.flash("success", "Wlecome back to Wanderlust!");
+  req.flash("success", "Welcome back to Wanderlust!"); // <-- fixed typo here
   let redirectUrl = res.locals.redirectUrl || "/listings";
   res.redirect(redirectUrl);
 };
